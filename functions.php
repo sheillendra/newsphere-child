@@ -15,9 +15,11 @@ function headnews_enqueue_child_styles()
         array('bootstrap', $parent_style),
         wp_get_theme()->get('Version')
     );
+
 }
 add_action('wp_enqueue_scripts', 'headnews_enqueue_child_styles');
 
+load_theme_textdomain('newsphere', get_stylesheet_directory().'/languages');
 /**
  * Trending posts additions.
  */
@@ -117,4 +119,28 @@ if (!function_exists('pvc_post_views')) {
         else
             return $html;
     }
+}
+
+//logo admin
+$custom_logo_id = get_theme_mod('custom_logo');
+// We have a logo. Logo is go.
+if ($custom_logo_id) {
+	function my_login_logo()
+	{
+		global $custom_logo_id;
+		$image = wp_get_attachment_image_src($custom_logo_id, 'full');
+?>
+		<style type="text/css">
+			#login h1 a,
+			.login h1 a {
+				background-image: url(<?php echo $image[0]; ?>);
+				height: 65px;
+				width: 320px;
+				background-size: 320px 65px;
+				background-repeat: no-repeat;
+			}
+		</style>
+<?php
+	}
+	add_action('login_enqueue_scripts', 'my_login_logo');
 }
