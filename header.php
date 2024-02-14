@@ -51,6 +51,7 @@ do_action('newsphere_action_front_page_main_section');
 
 do_action('newsphere_action_banner_featured_section');
 
+do_action('newsphere_action_banner_sites_section');
 
 if (is_singular('post')) {
     $single_post_featured_image_view = newsphere_get_option('single_post_featured_image_view');

@@ -28,7 +28,13 @@ require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-thumbs.p
 /**
  * Trending posts additions.
  */
-require get_stylesheet_directory() . '/inc/hooks/hook-front-page-main-banner-section.php';
+require get_stylesheet_directory().'/inc/hooks/hook-front-page-main-banner-section.php';
+
+/**
+ * Sites Multisite.
+ */
+require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-section.php';
+require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-posts.php';
 
 /**
  * Sosial Button and Post Count
