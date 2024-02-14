@@ -75,7 +75,6 @@ if (!function_exists('newsphere_banner_sites_posts')) :
                                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                                 </h4>
                                             </div>
-
                                             <div class="entry-meta">
                                                 <?php newsphere_get_comments_count($post->ID); ?>
                                                 <?php newsphere_post_item_meta(); ?>

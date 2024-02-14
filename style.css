@@ -129,3 +129,7 @@ body .trending-posts-vertical .trending-no {
 .wp-block-group .wp-block-group__inner-container h6.wp-block-heading::after {
     background-color: #78fbb7;
 }
+
+body.aft-hide-date-author-in-list .af-double-column.list-style .author-links {
+    display: inherit;
+}
