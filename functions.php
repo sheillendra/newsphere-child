@@ -37,6 +37,11 @@ require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-se
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-posts.php';
 
 /**
+ * hide uncategorized
+ */
+require get_stylesheet_directory() . '/inc/template-tags.php';
+
+/**
  * Sosial Button and Post Count
  */
 require get_stylesheet_directory() . '/inc/hooks/hook-single-header.php';
