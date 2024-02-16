@@ -1,69 +1,64 @@
 <?php
-if (!function_exists('newsphere_banner_sites_posts')) :
+if (!function_exists('newsphere_banner_featured_posts')):
     /**
      * Ticker Slider
      *
      * @since Newsphere 1.0.0
      *
      */
-    function newsphere_banner_sites_posts()
+    function newsphere_banner_featured_posts()
     {
         $color_class = 'category-color-1';
-
-        $dir = 'ltr';
-        if (is_rtl()) {
-            $dir = 'rtl';
-        }
-
-        $sites = get_sites();
-        $currentSite = get_site();
-        foreach ($sites as $site) :
-            if ($currentSite->blog_id === $site->blog_id) {
-                continue;
-            }
-
-            $details = get_blog_details($site->blog_id);
-            switch_to_blog($site->blog_id);
-
-?>
-            <div class="af-main-banner-featured-posts featured-posts" dir="<?php echo esc_attr($dir); ?>">
-                <h4 class="header-after1 ">
-                    <span class="header-after <?php echo esc_attr($color_class); ?>">
-                        <a href="<?php echo esc_html($details->siteurl); ?>"><?php echo esc_html($details->blogname); ?></a>
-                    </span>
-                </h4>
+        ?>
+        <?php
+        $newsphere_enable_featured_news = newsphere_get_option('show_featured_news_section');
+        if ($newsphere_enable_featured_news):
+            $newsphere_featured_news_title = newsphere_get_option('featured_news_section_title');
+	        $dir = 'ltr';
+	        if(is_rtl()){
+		        $dir = 'rtl';
+	        }
+            ?>
+            <div class="af-main-banner-featured-posts featured-posts" dir="<?php echo esc_attr($dir);?>">
+                <?php if (!empty($newsphere_featured_news_title)): ?>
+                    <h4 class="header-after1 ">
+                                <span class="header-after <?php echo esc_attr($color_class); ?>">
+                                    <?php echo esc_html($newsphere_featured_news_title); ?>
+                                </span>
+                    </h4>
+                <?php endif; ?>
 
 
                 <div class="section-wrapper">
                     <div class="af-double-column list-style af-container-row clearfix">
                         <?php
-                        $newsphere_sites_category = newsphere_get_option('select_featured_news_category');
-                        $newsphere_number_of_sites_news = newsphere_get_option('number_of_featured_news');
+                        $newsphere_featured_category = newsphere_get_option('select_featured_news_category');
+                        $newsphere_number_of_featured_news = newsphere_get_option('number_of_featured_news');
 
-                        $sites_posts = newsphere_get_posts($newsphere_number_of_sites_news, $newsphere_sites_category);
-                        if ($sites_posts->have_posts()) :
-                            while ($sites_posts->have_posts()) :
-                                $sites_posts->the_post();
+                        $featured_posts = newsphere_get_posts($newsphere_number_of_featured_news, $newsphere_featured_category);
+                        if ($featured_posts->have_posts()) :
+                            while ($featured_posts->have_posts()) :
+                                $featured_posts->the_post();
 
                                 global $post;
 
                                 $thumbnail_size = 'thumbnail';
-                        ?>
+                                ?>
 
                                 <div class="col-3 pad float-l " data-mh="af-feat-list">
                                     <div class="read-single color-pad">
                                         <div class="read-img pos-rel col-4 float-l read-bg-img">
                                             <a href="<?php the_permalink(); ?>">
-                                                <?php if (has_post_thumbnail()) :
-                                                    the_post_thumbnail($thumbnail_size);
-                                                endif;
-                                                ?>
+                                            <?php if ( has_post_thumbnail() ):
+                                                the_post_thumbnail($thumbnail_size);
+                                            endif;
+                                            ?>
                                             </a>
 
                                             <span class="min-read-post-format">
-                                                <?php newsphere_post_format($post->ID); ?>
-                                                <?php newsphere_count_content_words($post->ID); ?>
-                                            </span>
+		  								<?php newsphere_post_format($post->ID); ?>
+                                        <?php newsphere_count_content_words($post->ID); ?>
+                                        </span>
 
                                         </div>
                                         <div class="read-details col-75 float-l pad color-tp-pad">
@@ -75,6 +70,7 @@ if (!function_exists('newsphere_banner_sites_posts')) :
                                                     <a href="<?php the_permalink(); ?>"><?php echo wp_trim_words( $post->post_title, 5, '...' ); ?></a>
                                                 </h4>
                                             </div>
+
                                             <div class="entry-meta">
                                                 <?php newsphere_get_comments_count($post->ID); ?>
                                                 <?php newsphere_post_item_meta(); ?>
@@ -83,19 +79,20 @@ if (!function_exists('newsphere_banner_sites_posts')) :
                                     </div>
                                 </div>
 
-                        <?php endwhile;
+                            <?php endwhile;
                         endif;
                         wp_reset_postdata();
                         ?>
                     </div>
                 </div>
             </div>
-            <!-- Trending line END -->
-<?php
-        endforeach;
-        //restore_current_blog();
-        switch_to_blog($currentSite->blog_id);
+
+        <?php endif; ?>
+
+        <!-- Trending line END -->
+        <?php
+
     }
 endif;
 
-add_action('newsphere_action_banner_sites_posts', 'newsphere_banner_sites_posts', 10);
+add_action('newsphere_action_banner_featured_posts', 'newsphere_banner_featured_posts', 10);
