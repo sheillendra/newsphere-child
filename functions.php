@@ -1,5 +1,7 @@
 <?php
 
+
+$GLOBALS['exclude_ids'] = array();
 function headnews_enqueue_child_styles()
 {
     $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
@@ -20,6 +22,17 @@ function headnews_enqueue_child_styles()
 add_action('wp_enqueue_scripts', 'headnews_enqueue_child_styles');
 
 load_theme_textdomain('newsphere', get_stylesheet_directory().'/languages');
+
+/**
+ * hide uncategorized
+ */
+require get_stylesheet_directory() . '/inc/template-functions.php';
+
+/**
+ * hide uncategorized
+ */
+require get_stylesheet_directory() . '/inc/template-tags.php';
+
 /**
  * Trending posts additions.
  */
@@ -36,11 +49,6 @@ require get_stylesheet_directory().'/inc/hooks/hook-front-page-main-banner-secti
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-section.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-posts.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-featured-posts.php';
-
-/**
- * hide uncategorized
- */
-require get_stylesheet_directory() . '/inc/template-tags.php';
 
 /**
  * Sosial Button and Post Count

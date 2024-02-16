@@ -7,7 +7,8 @@ if (!function_exists('headnews_banner_thumbs')) :
      *
      */
     function headnews_banner_thumbs()
-    { ?>
+    {
+?>
         <div class="af-main-banner-featured-posts featured-posts">
             <div class="section-wrapper">
                 <div class="small-gird-style af-container-row clearfix">
@@ -22,6 +23,7 @@ if (!function_exists('headnews_banner_thumbs')) :
                             'posts_per_page' => 2,
                             'orderby' => 'comment_count',
                             'ignore_sticky_posts' => true,
+                            'post__not_in' => $GLOBALS['exclude_ids'],
                             'date_query' => array(
                                 array(
                                     'year' => date('Y'),
@@ -34,7 +36,8 @@ if (!function_exists('headnews_banner_thumbs')) :
                         while ($featured_posts->have_posts()) :
                             $featured_posts->the_post();
                             $aft_post_id = get_the_ID();
-                            $thumbnail_size = 'medium'; ?>
+                            $thumbnail_size = 'medium';
+                            $GLOBALS['exclude_ids'][] = $aft_post_id; ?>
                             <div class="col-1 pad float-l big-grid af-sec-post">
                                 <div class="read-single pos-rel">
                                     <div class="read-img pos-rel read-bg-img">
