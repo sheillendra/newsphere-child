@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom template tags for this theme
  *
@@ -11,7 +12,7 @@ if (!function_exists('newsphere_post_categories')) :
     function newsphere_post_categories($separator = '&nbsp')
     {
         $global_show_categories = newsphere_get_option('global_show_categories');
-        if($global_show_categories == 'no'){
+        if ($global_show_categories == 'no') {
             return;
         }
 
@@ -24,7 +25,7 @@ if (!function_exists('newsphere_post_categories')) :
             if ($post_categories) {
                 $output = '<ul class="cat-links">';
                 foreach ($post_categories as $post_category) {
-                    if($post_category->slug === 'uncategorized' || $post_category->slug === 'tak-berkategori'){
+                    if ($post_category->slug === 'uncategorized' || $post_category->slug === 'tak-berkategori') {
                         continue;
                     }
                     $t_id = $post_category->term_id;
@@ -42,7 +43,6 @@ if (!function_exists('newsphere_post_categories')) :
                 }
                 $output .= '</ul>';
                 echo $output;
-
             }
         }
     }
@@ -59,8 +59,6 @@ if (!function_exists('newsphere_get_category_color_class')) :
         $term_meta = get_option($color_id);
         $color_class = ($term_meta) ? $term_meta['color_class_term_meta'] : '';
         return $color_class;
-
-
     }
 endif;
 
@@ -70,43 +68,42 @@ if (!function_exists('newsphere_post_item_meta')) :
     {
 
         global $post;
-        if ('post' == get_post_type($post->ID)):
+        if ('post' == get_post_type($post->ID)) :
 
             $author_id = $post->post_author;
             $display_setting = newsphere_get_option('global_post_date_author_setting');
             $date_display_setting = newsphere_get_option('global_date_display_setting');
 
-            ?>
+?>
 
             <span class="author-links">
 
-            <?php
+                <?php
 
-            if ($display_setting == 'show-date-author' || $display_setting == 'show-date-only'): ?>
-                <span class="item-metadata posts-date">
-                <i class="fa fa-clock-o"></i>
-                    <?php
-                    if ($date_display_setting == 'default-date') {
-                        the_time(get_option('date_format'));
-                    } else {
-                        echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ' . __('ago', 'newsphere');
-                    }
+                if ($display_setting == 'show-date-author' || $display_setting == 'show-date-only') : ?>
+                    <span class="item-metadata posts-date">
+                        <i class="fa fa-clock-o"></i>
+                        <?php
+                        if ($date_display_setting == 'default-date') {
+                            the_time(get_option('date_format'));
+                        } else {
+                            echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ' . __('ago', 'newsphere');
+                        }
 
-                    ?>
-            </span>
-            <?php endif; ?>
-                <?php if ($display_setting == 'show-date-author' || $display_setting == 'show-author-only'): ?>
+                        ?>
+                    </span>
+                <?php endif; ?>
+                <?php if ($display_setting == 'show-date-author' || $display_setting == 'show-author-only') : ?>
 
                     <span class="item-metadata posts-author byline">
-                    <i class="fa fa-pencil-square-o"></i>
-                    <?php newsphere_by_author();?>
-        </span>
+                        <i class="fa fa-pencil-square-o"></i>
+                        <?php newsphere_by_author(); ?>
+                    </span>
                 <?php endif; ?>
 
-        </span>
-        <?php
+            </span>
+<?php
         endif;
-
     }
 endif;
 
@@ -131,7 +128,7 @@ if (!function_exists('newsphere_post_item_tag')) :
             edit_post_link(
                 sprintf(
                     wp_kses(
-                    /* translators: %s: Name of current post. Only visible to screen readers */
+                        /* translators: %s: Name of current post. Only visible to screen readers */
                         __('Edit <span class="screen-reader-text">%s</span>', 'newsphere'),
                         array(
                             'span' => array(
@@ -145,6 +142,5 @@ if (!function_exists('newsphere_post_item_tag')) :
                 '</span>'
             );
         }
-
     }
 endif;

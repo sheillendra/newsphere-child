@@ -63,7 +63,7 @@ if (!function_exists('newsphere_banner_featured_posts')):
                                         </div>
                                         <div class="read-details col-75 float-l pad color-tp-pad">
                                             <div class="read-categories">
-                                                <?php newsphere_post_categories(); ?>
+                                                <?php //newsphere_post_categories(); ?>
                                             </div>
                                             <div class="read-title">
                                                 <h4>
