@@ -26,7 +26,9 @@ get_header(); ?>
 
 		do_action('newsphere_action_banner_sites_section');
 
-		if (have_posts()) :
+		$indexQuery = new WP_Query(array('post__not_in' => $GLOBALS['exclude_ids']));
+
+		if ($indexQuery->have_posts()) :
 
 			if (is_home() && !is_front_page()) : ?>
 				<header>
@@ -41,18 +43,21 @@ get_header(); ?>
 			?>
 			<!--<div class="af-container-row aft-archive-wrapper clearfix <?php /*echo esc_attr( $archive_class ); */ ?>">-->
 
-			<?php while (have_posts()) : the_post();
+			<?php
 
-				/*
-							 * Include the Post-Format-specific template for the content.
-							 * If you want to override this in a child theme, then include a file
-							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-							 */
+			while ($indexQuery->have_posts()) {
+				$indexQuery->the_post();
+
+				$GLOBALS['exclude_ids'][] = $post->ID;
+
+				/**
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
 
 				get_template_part('template-parts/content', get_post_format());
-
-
-			endwhile;
+			}
 			//div wrap end
 			do_action('newsphere_archive_layout_after_loop');
 

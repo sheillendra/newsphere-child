@@ -8,7 +8,6 @@
 if (!function_exists('newsphere_get_posts')) :
     function newsphere_get_posts($number_of_posts, $category = '0')
     {
-
         $ins_args = array(
             'post_type' => 'post',
             'posts_per_page' => absint($number_of_posts),

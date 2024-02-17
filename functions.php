@@ -1,6 +1,5 @@
 <?php
 
-
 $GLOBALS['exclude_ids'] = array();
 function headnews_enqueue_child_styles()
 {
@@ -17,11 +16,10 @@ function headnews_enqueue_child_styles()
         array('bootstrap', $parent_style),
         wp_get_theme()->get('Version')
     );
-
 }
 add_action('wp_enqueue_scripts', 'headnews_enqueue_child_styles');
 
-load_theme_textdomain('newsphere', get_stylesheet_directory().'/languages');
+load_theme_textdomain('newsphere', get_stylesheet_directory() . '/languages');
 
 /**
  * hide uncategorized
@@ -41,7 +39,7 @@ require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-thumbs.p
 /**
  * Trending posts additions.
  */
-require get_stylesheet_directory().'/inc/hooks/hook-front-page-main-banner-section.php';
+require get_stylesheet_directory() . '/inc/hooks/hook-front-page-main-banner-section.php';
 
 /**
  * Sites Multisite.
@@ -99,6 +97,15 @@ function headnews_custom_header_setup($default_custom_header)
 }
 add_filter('newsphere_custom_header_args', 'headnews_custom_header_setup', 1);
 
+// function be_exclude_ids_from_blog($query)
+// {
+
+//     if ($query->is_main_query() && !is_admin() && $query->is_home()) {
+//         $query->set('post__not_in', $GLOBALS['exclude_ids']);
+//     }
+// }
+// add_action('pre_get_posts', 'be_exclude_ids_from_blog');
+
 // custom pvc
 if (!function_exists('pvc_post_views')) {
 
@@ -145,22 +152,22 @@ if (!function_exists('pvc_post_views')) {
 $custom_logo_id = get_theme_mod('custom_logo');
 // We have a logo. Logo is go.
 if ($custom_logo_id) {
-	function my_login_logo()
-	{
-		global $custom_logo_id;
-		$image = wp_get_attachment_image_src($custom_logo_id, 'full');
+    function my_login_logo()
+    {
+        global $custom_logo_id;
+        $image = wp_get_attachment_image_src($custom_logo_id, 'full');
 ?>
-		<style type="text/css">
-			#login h1 a,
-			.login h1 a {
-				background-image: url(<?php echo $image[0]; ?>);
-				height: 65px;
-				width: 320px;
-				background-size: 320px 65px;
-				background-repeat: no-repeat;
-			}
-		</style>
+        <style type="text/css">
+            #login h1 a,
+            .login h1 a {
+                background-image: url(<?php echo $image[0]; ?>);
+                height: 65px;
+                width: 320px;
+                background-size: 320px 65px;
+                background-repeat: no-repeat;
+            }
+        </style>
 <?php
-	}
-	add_action('login_enqueue_scripts', 'my_login_logo');
+    }
+    add_action('login_enqueue_scripts', 'my_login_logo');
 }

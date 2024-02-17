@@ -37,7 +37,7 @@ $all_posts_vertical = newsphere_get_posts($vertical_slider_number_of_slides, $se
 
                                         <div class="read-details float-l col-85 pad color-tp-pad">
                                             <div class="read-categories">
-                                                <?php newsphere_post_categories(); ?>
+                                                <?php //newsphere_post_categories(); ?>
                                             </div>
                                             <div class="read-title">
                                                 <h4>

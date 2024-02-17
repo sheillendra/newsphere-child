@@ -17,6 +17,9 @@ if (!function_exists('newsphere_banner_sites_posts')) :
 
         $sites = get_sites();
         $currentSite = get_site();
+
+        $excludeIds = $GLOBALS['exclude_ids'];
+        $GLOBALS['exclude_ids'] = [];
         foreach ($sites as $site) :
             if ($currentSite->blog_id === $site->blog_id) {
                 continue;
@@ -95,6 +98,7 @@ if (!function_exists('newsphere_banner_sites_posts')) :
         endforeach;
         //restore_current_blog();
         switch_to_blog($currentSite->blog_id);
+        $GLOBALS['exclude_ids'] = $excludeIds;
     }
 endif;
 

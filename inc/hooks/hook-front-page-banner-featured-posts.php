@@ -43,6 +43,7 @@ if (!function_exists('newsphere_banner_featured_posts')):
                                 global $post;
 
                                 $thumbnail_size = 'thumbnail';
+                                $GLOBALS['exclude_ids'][] = $post->ID;
                                 ?>
 
                                 <div class="col-3 pad float-l " data-mh="af-feat-list">
