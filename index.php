@@ -26,7 +26,11 @@ get_header(); ?>
 
 		do_action('newsphere_action_banner_sites_section');
 
-		$indexQuery = new WP_Query(array('post__not_in' => $GLOBALS['exclude_ids']));
+		$indexQuery = new WP_Query(array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'post__not_in' => $GLOBALS['exclude_ids'],
+		));
 
 		if ($indexQuery->have_posts()) :
 
@@ -48,7 +52,7 @@ get_header(); ?>
 			while ($indexQuery->have_posts()) {
 				$indexQuery->the_post();
 
-				$GLOBALS['exclude_ids'][] = $post->ID;
+				$GLOBALS['exclude_ids'][] = get_the_ID();
 
 				/**
 				 * Include the Post-Format-specific template for the content.
