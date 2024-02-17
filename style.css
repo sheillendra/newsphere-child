@@ -130,8 +130,20 @@ body .trending-posts-vertical .trending-no {
     background-color: #78fbb7;
 }
 
+.vertical-slider .af-double-column.list-style .entry-meta {
+    display: inherit;
+}
+
+.vertical-slider .af-double-column.list-style .entry-meta .author-links .posts-author {
+    display: none;
+}
+
 body.aft-hide-date-author-in-list .af-double-column.list-style .author-links {
     display: inherit;
+}
+
+body.aft-hide-date-author-in-list .af-double-column.list-style .author-links .posts-author{
+    display: none;
 }
 
 .totalpoll-question-content {
