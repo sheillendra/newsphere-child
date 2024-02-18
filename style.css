@@ -147,6 +147,6 @@ body.aft-hide-date-author-in-list .af-double-column.list-style .author-links .po
 }
 
 .totalpoll-question-content,
-.totalpoll-form-field-label {
+.totalpoll-form-field-wrapper {
     color: white;
 }
