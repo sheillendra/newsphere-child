@@ -146,6 +146,7 @@ body.aft-hide-date-author-in-list .af-double-column.list-style .author-links .po
     display: none;
 }
 
-.totalpoll-question-content {
+.totalpoll-question-content,
+.totalpoll-form-field-label {
     color: white;
 }
