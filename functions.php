@@ -47,6 +47,7 @@ require get_stylesheet_directory() . '/inc/hooks/hook-front-page-main-banner-sec
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-section.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-posts.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-featured-posts.php';
+require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-featured-section.php';
 
 /**
  * Sosial Button and Post Count

@@ -26,10 +26,12 @@ get_header(); ?>
 
 		do_action('newsphere_action_banner_sites_section');
 
+		$page = ( get_query_var('page') ) ? get_query_var('page') : 1;
 		$indexQuery = new WP_Query(array(
 			'post_type' => 'post',
 			'post_status' => 'publish',
 			'post__not_in' => $GLOBALS['exclude_ids'],
+			'page' => $page 
 		));
 
 		if ($indexQuery->have_posts()) :

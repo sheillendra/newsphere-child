@@ -14,9 +14,9 @@ if (!function_exists('newsphere_banner_sites_section')) :
             if (is_front_page()) { ?>
 
                 <section class="aft-blocks">
-                    <div class="container-wrapper">
+                    <!-- <div class="container-wrapper"> -->
                         <?php do_action('newsphere_action_banner_sites_posts'); ?>
-                    </div>
+                    <!-- </div> -->
                 </section>
             <?php
             }
@@ -24,9 +24,9 @@ if (!function_exists('newsphere_banner_sites_section')) :
             if (is_front_page() || is_home()) {  ?>
 
                 <section class="aft-blocks">
-                    <div class="container-wrapper">
+                    <!-- <div class="container-wrapper"> -->
                         <?php do_action('newsphere_action_banner_sites_posts'); ?>
-                    </div>
+                    <!-- </div> -->
                 </section>
 <?php
             }
