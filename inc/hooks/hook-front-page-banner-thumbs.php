@@ -21,7 +21,8 @@ if (!function_exists('headnews_banner_thumbs')) :
                             'post_type' => 'post',
                             'post_status' => 'publish',
                             'posts_per_page' => 2,
-                            'orderby' => 'comment_count',
+                            'orderby' => 'post_views',
+                            'order' => 'DESC',
                             'ignore_sticky_posts' => true,
                             'post__not_in' => $GLOBALS['exclude_ids'],
                             'date_query' => array(
@@ -31,6 +32,7 @@ if (!function_exists('headnews_banner_thumbs')) :
                                 )
                             )
                         ));
+                        
                     }
                     if ($featured_posts->have_posts()) :
                         while ($featured_posts->have_posts()) :
@@ -65,6 +67,7 @@ if (!function_exists('headnews_banner_thumbs')) :
                                         </div>
                                         <div class="entry-meta">
                                             <?php newsphere_post_item_meta(); ?>
+                                            <?php pvc_post_views()?>
                                         </div>
                                     </div>
                                 </div>
