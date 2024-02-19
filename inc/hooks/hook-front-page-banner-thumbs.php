@@ -27,8 +27,9 @@ if (!function_exists('headnews_banner_thumbs')) :
                             'post__not_in' => $GLOBALS['exclude_ids'],
                             'date_query' => array(
                                 array(
-                                    'year' => date('Y'),
-                                    'week' => date('W'),
+                                    //'year' => date('Y'),
+                                    //'week' => date('W'),
+                                    'after' => '1 week ago'
                                 )
                             )
                         ));

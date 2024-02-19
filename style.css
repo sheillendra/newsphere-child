@@ -150,3 +150,7 @@ body.aft-hide-date-author-in-list .af-double-column.list-style .author-links .po
 .totalpoll-form-field-wrapper {
     color: white;
 }
+
+.secondary-footer {
+    text-align: center;
+}

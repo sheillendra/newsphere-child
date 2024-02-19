@@ -40,7 +40,6 @@ if (!function_exists('headnews_front_page_main_section_2')) :
                     ?>
                     <!-- <div class="banner-carousel-1 af-widget-carousel owl-carousel owl-theme"> -->
                     <div class="aft-main-banner-wrapper af-container-row clearfix <?php echo esc_attr($newsphere_slider_order); ?>">
-
                         <div class="aft-trending-latest-popular col col-3 float-l pad full-wid-resp">
                             <?php
 
