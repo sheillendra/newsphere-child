@@ -13,11 +13,10 @@ if (!function_exists('newsphere_single_header')) :
         $wrapper_class = '';
         if ($show_featured_image == false) {
             $wrapper_class = 'aft-no-featured-image';
-
         }
         global $post;
         $post_id = $post->ID;
-        ?>
+?>
         <header class="entry-header pos-rel <?php echo esc_attr($wrapper_class); ?>">
             <div class="read-details marg-btm-lr">
                 <div class="entry-header-details">
@@ -33,7 +32,7 @@ if (!function_exists('newsphere_single_header')) :
                     <?php if ('post' === get_post_type($post_id)) :
 
 
-                        ?>
+                    ?>
                         <span class="min-read-post-format">
                             <?php newsphere_post_format($post_id); ?>
                             <?php newsphere_count_content_words($post->ID); ?>
@@ -43,12 +42,12 @@ if (!function_exists('newsphere_single_header')) :
                         </div>
                         <?php echo do_shortcode('[Sassy_Social_Share]') ?>
 
-                        <?php if (has_excerpt($post_id)):  ?>
-                        <div class="post-excerpt">
-                            <?php echo wp_kses_post(get_the_excerpt($post_id)); ?>
-                        </div>
+                        <?php if (has_excerpt($post_id)) :  ?>
+                            <div class="post-excerpt">
+                                <?php echo wp_kses_post(get_the_excerpt($post_id)); ?>
+                            </div>
 
-                    <?php endif; ?>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -56,22 +55,26 @@ if (!function_exists('newsphere_single_header')) :
             <?php
 
 
-            if ($show_featured_image):
-                ?>
+            if ($show_featured_image) :
+            ?>
                 <div class="read-img pos-rel">
                     <?php newsphere_post_thumbnail(); ?>
                     <span class="min-read-post-format">
 
                         <?php
-                        if (has_post_thumbnail($post_id)):
-                            $aft_image_caption = get_post(get_post_thumbnail_id())->post_excerpt;
-                            if (!empty($aft_image_caption)): ?>
+                        if (has_post_thumbnail($post_id)) :
+                            $postFromThumbnail = get_post(get_post_thumbnail_id());
+                            $aft_image_caption = '';
+                            if ($postFromThumbnail) {
+                                $aft_image_caption = $postFromThumbnail->post_excerpt;
+                            }
+                            if (!empty($aft_image_caption)) : ?>
                                 <span class="aft-image-caption">
                                     <p>
                                         <?php echo $aft_image_caption; ?>
                                     </p>
                                 </span>
-                            <?php
+                        <?php
                             endif;
                         endif;
                         ?>
@@ -82,7 +85,7 @@ if (!function_exists('newsphere_single_header')) :
         </header><!-- .entry-header -->
 
         <!-- end slider-section -->
-        <?php
+<?php
     }
 endif;
 add_action('newsphere_action_single_header', 'newsphere_single_header', 40);
