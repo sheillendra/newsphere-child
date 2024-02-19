@@ -40,7 +40,6 @@ if (!function_exists('newsphere_single_header')) :
                         </span>
                         <div class="entry-meta">
                             <?php newsphere_post_item_meta(); ?>
-                            <?php echo do_shortcode('[post-views]') ?>
                         </div>
                         <?php echo do_shortcode('[Sassy_Social_Share]') ?>
 

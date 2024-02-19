@@ -139,7 +139,7 @@ body .trending-posts-vertical .trending-no {
 }
 
 body.aft-hide-date-author-in-list .af-double-column.list-style .author-links {
-    display: inherit;
+    display: inline;
 }
 
 body.aft-hide-date-author-in-list .af-double-column.list-style .author-links .posts-author{

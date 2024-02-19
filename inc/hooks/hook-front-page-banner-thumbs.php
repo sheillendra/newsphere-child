@@ -68,7 +68,6 @@ if (!function_exists('headnews_banner_thumbs')) :
                                         </div>
                                         <div class="entry-meta">
                                             <?php newsphere_post_item_meta(); ?>
-                                            <?php pvc_post_views()?>
                                         </div>
                                     </div>
                                 </div>

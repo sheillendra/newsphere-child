@@ -100,7 +100,7 @@ if (!function_exists('newsphere_post_item_meta')) :
                         <?php newsphere_by_author(); ?>
                     </span>
                 <?php endif; ?>
-
+                <?php pvc_post_views()?>
             </span>
 <?php
         endif;
