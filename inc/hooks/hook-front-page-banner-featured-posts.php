@@ -68,7 +68,7 @@ if (!function_exists('newsphere_banner_featured_posts')):
                                             </div>
                                             <div class="read-title">
                                                 <h4>
-                                                    <a href="<?php the_permalink(); ?>"><?php echo wp_trim_words( $post->post_title, 5, '...' ); ?></a>
+                                                    <a href="<?php the_permalink(); ?>" title="<?php the_title()?>"><?php echo wp_trim_words( $post->post_title, 5, '...' ); ?></a>
                                                 </h4>
                                             </div>
 

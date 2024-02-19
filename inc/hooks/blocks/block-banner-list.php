@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="read-title">
                                                 <h4>
-                                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo wp_trim_words( $post->post_title, 10, '...' ); ?></a>
                                                 </h4>
                                             </div>
 
