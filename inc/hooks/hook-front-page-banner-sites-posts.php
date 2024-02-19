@@ -21,7 +21,7 @@ if (!function_exists('newsphere_banner_sites_posts')) :
         $excludeIds = $GLOBALS['exclude_ids'];
         $GLOBALS['exclude_ids'] = [];
         foreach ($sites as $site) :
-            if ($currentSite->blog_id === $site->blog_id) {
+            if ($currentSite->blog_id === $site->blog_id || $site->deleted == 1 || $site->public == 0 ) {
                 continue;
             }
 
