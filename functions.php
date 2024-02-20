@@ -44,6 +44,7 @@ require get_stylesheet_directory() . '/inc/hooks/hook-front-page-main-banner-sec
 /**
  * Sites Multisite.
  */
+require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-promotions.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-section.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-sites-posts.php';
 require get_stylesheet_directory() . '/inc/hooks/hook-front-page-banner-featured-posts.php';

@@ -130,6 +130,11 @@ body .trending-posts-vertical .trending-no {
     background-color: #78fbb7;
 }
 
+.header-style1 .main-header .af-flex-container {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .vertical-slider .af-double-column.list-style .entry-meta {
     display: inherit;
 }

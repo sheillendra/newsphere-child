@@ -95,7 +95,7 @@
                         <div class="swiper-slide">
                             <div class="list-part af-sec-post">
                                 <div class="af-double-column list-style clearfix">
-                                    <div class="read-single color-pad">
+                                    <div class="read-single color-pad" title="<?php the_title(); ?>">
                                         <span class="trending-no">
                                             <?php echo sprintf(__('%s', 'newsphere'), $count); ?>
                                         </span>
@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="read-title">
                                                 <h4>
-                                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo wp_trim_words( $post->post_title, 10, '...' ); ?></a>
+                                                    <a href="<?php the_permalink(); ?>"><?php echo wp_trim_words($post->post_title, 10, '...'); ?></a>
                                                 </h4>
                                             </div>
 
