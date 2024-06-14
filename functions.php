@@ -197,7 +197,7 @@ function fb_opengraph() {
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="<?php echo the_permalink(); ?>"/>
     <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
-    <meta property="og:image" content="<?php echo $img_src; ?>"/>
+    <meta property="og:image" content="<?php echo is_array($img_src)?$img_src[0]:$img_src; ?>"/>
  
 <?php
     } else {
