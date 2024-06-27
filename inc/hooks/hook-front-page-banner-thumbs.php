@@ -17,7 +17,7 @@ if (!function_exists('headnews_banner_thumbs')) :
                     if ($newsphere_editors_pick_category) {
                         $featured_posts = newsphere_get_posts(2, $newsphere_editors_pick_category);
                     } else {
-                        $featured_posts = new WP_Query(array(
+                        $opts = array(
                             'post_type' => 'post',
                             'post_status' => 'publish',
                             'posts_per_page' => 2,
@@ -32,8 +32,28 @@ if (!function_exists('headnews_banner_thumbs')) :
                                     'after' => '1 week ago'
                                 )
                             )
-                        ));
-                        
+                        );
+
+                        $featured_posts = new WP_Query($opts);
+                        if ($featured_posts->have_posts() == null) {
+                            $opts['date_query'] = array(
+                                array(
+                                    'after' => '1 month ago'
+                                )
+                            );
+                            $featured_posts = new WP_Query($opts);
+                            if ($featured_posts->have_posts() == null) {
+                                $opts['date_query'] = array(
+                                    array(
+                                        'after' => '1 year ago'
+                                    )
+                                );
+                                $featured_posts = new WP_Query($opts);
+                                if ($featured_posts->have_posts() == null) {
+                                    $featured_posts = newsphere_get_posts(2);
+                                }
+                            }
+                        }
                     }
                     if ($featured_posts->have_posts()) :
                         while ($featured_posts->have_posts()) :
